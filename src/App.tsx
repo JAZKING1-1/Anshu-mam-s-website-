@@ -7,6 +7,7 @@ import { MobileQuickBar } from './components/MobileQuickBar';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { CoachingPage } from './pages/CoachingPage';
+import { StoryWallPage } from './pages/StoryWallPage';
 import { TestimonialsPage } from './pages/TestimonialsPage';
 import { BookingPage } from './pages/BookingPage';
 import { ContactPage } from './pages/ContactPage';
@@ -40,6 +41,8 @@ export const App: React.FC = () => {
         return <AboutPage onNavigate={navigateTo} />;
       case '/coaching':
         return <CoachingPage onNavigate={navigateTo} />;
+      case '/story-wall':
+        return <StoryWallPage onNavigate={navigateTo} />;
       case '/testimonials':
         return <TestimonialsPage onNavigate={navigateTo} />;
       case '/book':

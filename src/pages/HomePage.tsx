@@ -3,6 +3,7 @@ import { Hero } from '../components/Hero';
 import { PainSection } from '../components/PainSection';
 import { AboutSection } from '../components/AboutSection';
 import { GoldenCageSection } from '../components/GoldenCageSection';
+import { StoryWallSection } from '../components/StoryWallSection';
 import { ProcessSection } from '../components/ProcessSection';
 import { TopicsSection } from '../components/TopicsSection';
 import { CoachingOffer } from '../components/CoachingOffer';
@@ -22,6 +23,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       <PainSection onNavigate={onNavigate} />
       <AboutSection />
       <GoldenCageSection onNavigate={onNavigate} />
+      <StoryWallSection onNavigate={onNavigate} />
       <ProcessSection />
       <TopicsSection />
       <CoachingOffer onNavigate={onNavigate} />

@@ -45,7 +45,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath = '/', onNavigate })
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Coaching', path: '/coaching' },
-    { name: 'Process', path: '#process' },
+    { name: 'Story Wall', path: '/story-wall' },
     { name: 'Testimonials', path: '/testimonials' },
     { name: 'Free Clarity Call', path: '/book' },
   ];
