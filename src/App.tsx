@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { Chatbot } from './components/Chatbot';
 import { MobileQuickBar } from './components/MobileQuickBar';
+import { CuteGirlAvatar } from './components/CuteGirlAvatar';
 
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -59,14 +59,14 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFF9F4] text-[#2D2729] font-sans selection:bg-[#EFCBD5] selection:text-[#4A2E3B] flex flex-col justify-between pb-16 sm:pb-0">
+    <div className="notebook-site min-h-screen text-[#352b3a] font-sans selection:bg-[#efb8d2] selection:text-[#5d2343] flex flex-col justify-between pb-16 sm:pb-0">
       <div>
         <Header currentPath={currentPath} onNavigate={navigateTo} />
         <main>{renderPage()}</main>
       </div>
 
       <Footer onNavigate={navigateTo} />
-      <Chatbot onNavigate={navigateTo} />
+      <CuteGirlAvatar onNavigate={navigateTo} />
       <MobileQuickBar onNavigate={navigateTo} />
     </div>
   );

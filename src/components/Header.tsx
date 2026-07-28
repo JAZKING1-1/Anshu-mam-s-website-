@@ -43,12 +43,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPath = '/', onNavigate })
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Coaching', path: '/coaching' },
-    { name: 'Story Wall', path: '/story-wall' },
-    { name: 'Testimonials', path: '/testimonials' },
-    { name: 'Free Clarity Call', path: '/book' },
+    { name: 'Home', path: '#home' },
+    { name: 'Meet Anshu', path: '#meet-anshu' },
+    { name: 'How I Help', path: '#support' },
+    { name: 'Your Journey', path: '#process' },
+    { name: 'Client Stories', path: '#stories' },
   ];
 
   const handleLinkClick = (path: string, e: React.MouseEvent) => {
