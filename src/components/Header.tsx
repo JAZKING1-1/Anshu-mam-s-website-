@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sparkles, PhoneCall } from 'lucide-react';
+import { Menu, X, PhoneCall } from 'lucide-react';
+import { SVGLogo } from './SVGLogo';
 
 interface HeaderProps {
   currentPath?: string;
@@ -82,19 +83,9 @@ export const Header: React.FC<HeaderProps> = ({ currentPath = '/', onNavigate })
           <a
             href="/"
             onClick={(e) => handleLinkClick('/', e)}
-            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#9C536D] rounded-xl p-1 no-underline"
+            className="focus:outline-none focus:ring-2 focus:ring-[#7D2548] rounded-xl p-1 no-underline"
           >
-            <div className="w-9 h-9 rounded-full bg-[#EFCBD5]/50 flex items-center justify-center border border-[#C3A36B]/40 group-hover:bg-[#EFCBD5] transition-colors">
-              <Sparkles className="w-4 h-4 text-[#C3A36B]" />
-            </div>
-            <div>
-              <span className="font-serif text-2xl font-bold tracking-tight text-[#4A2E3B] block leading-tight">
-                Anshu Sahani
-              </span>
-              <span className="text-[10px] text-[#9C536D] font-bold tracking-widest uppercase block mt-0.5">
-                LIFE COACH FOR WOMEN
-              </span>
-            </div>
+            <SVGLogo />
           </a>
 
           {/* Desktop Navigation Links (Above 900px / lg breakpoint) */}
