@@ -1,0 +1,54 @@
+.offering-section { background:var(--surface); }
+.offering-heading { align-items:end; }
+.offering-heading > p { max-width:340px; color:var(--muted); }
+.offering-grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+.offering-card { display:flex; flex-direction:column; position:relative; padding:40px; border:1px solid var(--line); border-radius:3px 54px 3px 3px; background:var(--paper); overflow:hidden; scroll-margin-top:110px; }
+.offering-card-2 { background:var(--deep); color:var(--on-deep); border-color:var(--deep); border-radius:54px 3px 3px 3px; }
+.offering-topline { display:flex; gap:16px; align-items:center; justify-content:space-between; padding-bottom:32px; color:var(--accent-text); }
+.offering-topline span { font-size:9px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; }
+.offering-topline svg { flex-shrink:0; }
+.offering-card-2 .offering-topline { color:var(--gold-light); }
+.offering-title h3 { font-size:clamp(35px,3.6vw,49px); letter-spacing:-.04em; line-height:1.1; }
+.offering-price { display:inline-block; font-size:9px; font-weight:600; letter-spacing:.05em; margin-top:17px; padding:6px 12px; border:1px solid var(--line); border-radius:20px; }
+.offering-card-2 .offering-price { border-color:color-mix(in srgb,var(--on-deep) 35%,transparent); }
+.offering-promise { font-family:var(--serif); font-size:23px; line-height:1.35; margin-top:27px; max-width:330px; }
+.offering-description { font-size:14px; line-height:1.85; color:var(--muted); margin:17px 0 27px; }
+.offering-card-2 .offering-description,.offering-card-2 .offering-note { color:color-mix(in srgb,var(--on-deep) 85%,transparent); }
+.offering-card-bottom { margin-top:auto; border-top:1px solid var(--line); padding-top:23px; }
+.offering-card-2 .offering-card-bottom { border-color:color-mix(in srgb,var(--on-deep) 26%,transparent); }
+.offering-format { display:block; font-size:10px; letter-spacing:.05em; margin-bottom:17px; }
+.offering-card .button { width:100%; justify-content:space-between; text-align:left; gap:18px; }
+.offering-card .button svg { flex-shrink:0; }
+.offering-note { margin-top:15px; font-size:11px; color:var(--muted); line-height:1.7; }
+.offering-afterword { display:flex; align-items:center; justify-content:space-between; gap:25px; padding-top:27px; }
+.offering-afterword p { font-size:12px; color:var(--muted); }
+.offering-afterword .text-link { flex-shrink:0; }
+.offering-detail { margin:0 0 32px; }
+.offering-audience { font-family:var(--serif); font-size:20px; line-height:1.5; padding-left:18px; border-left:2px solid var(--accent-text); margin-bottom:26px; }
+.offering-card-2 .offering-audience { border-color:var(--gold-light); }
+.offering-card-2 .eyebrow { color:var(--gold-light); }
+.offering-detail ul { list-style:none; padding:0; margin:18px 0 0; display:grid; gap:13px; }
+.offering-detail li { display:flex; gap:13px; align-items:baseline; font-size:13px; line-height:1.6; }
+.offering-detail li span { font-size:12px; color:var(--accent-text); }
+.offering-card-2 .offering-detail li span { color:var(--gold-light); }
+.coaching-choice-links { display:flex; flex-wrap:wrap; gap:20px; margin-top:22px; }
+.coaching-choice-links .text-link { font-size:11px; }
+.coaching-experience .offering-section { padding-top:75px; border-top:1px solid var(--line); }
+.offer-philosophy { display:flex; align-items:center; justify-content:space-between; gap:28px; padding-block:30px; border-bottom:1px solid var(--line); }
+.offer-philosophy p { font-family:var(--serif); font-size:clamp(24px,2.7vw,35px); line-height:1.3; }
+.offer-philosophy span { font-size:10px; max-width:275px; line-height:1.8; letter-spacing:.06em; color:var(--muted); }
+@media(max-width:900px) {
+  .offering-card { padding:28px; }
+  .offering-title h3 { font-size:37px; }
+  .offering-afterword { align-items:start; flex-direction:column; gap:7px; }
+}
+@media(max-width:650px) {
+  .offering-grid { grid-template-columns:1fr; gap:22px; }
+  .offering-card { padding:30px 25px; }
+  .offering-title h3 { font-size:39px; }
+  .offering-promise { font-size:24px; }
+  .offering-topline { padding-bottom:26px; }
+  .offering-card .button { font-size:11px; padding-inline:17px; }
+  .offer-philosophy { flex-direction:column; align-items:start; gap:15px; }
+  .offering-section-detailed .offering-heading h2 { font-size:36px; }
+}

@@ -15,35 +15,37 @@ import { ArrowRight } from 'lucide-react';
 
 const titles: Record<string, string> = {
   '/': 'Life & Relationship Coaching for Women', '/about': 'My Story',
-  '/coaching': 'Coaching with Anshu', '/testimonials': 'Client Stories',
-  '/story-wall': 'Client Stories', '/book': 'Your Clarity Call',
+  '/coaching': 'Work with Anshu | Clarity Call & 1:1 Coaching', '/testimonials': 'Client Stories',
+  '/story-wall': 'Client Stories', '/book': 'Enquire about coaching',
   '/contact': 'Let’s Connect', '/privacy': 'Privacy', '/terms': 'Coaching Terms',
 };
 export default function App() {
-  const [path, setPath] = useState(window.location.pathname.replace(/\/$/, '') || '/');
+  const readRoute = () => (window.location.pathname.replace(/\/$/, '') || '/') + window.location.search;
+  const [route, setRoute] = useState(readRoute);
+  const path = route.split('?')[0];
   const [themeOpen, setThemeOpen] = useState(false);
   const navigateTo = (next: string) => {
-    if (next === path) { window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motionPreference === 'reduced' ? 'instant' : 'smooth' }); return; }
-    window.history.pushState({}, '', next); setPath(next);
+    if (next === route) { window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motionPreference === 'reduced' ? 'instant' : 'smooth' }); return; }
+    window.history.pushState({}, '', next); setRoute(next);
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
   useEffect(() => {
-    const handlePop = () => { setPath(window.location.pathname.replace(/\/$/, '') || '/'); window.scrollTo(0, 0); };
+    const handlePop = () => { setRoute(readRoute()); window.scrollTo(0, 0); };
     const handleLink = (event: MouseEvent) => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const link = (event.target as Element).closest<HTMLAnchorElement>('a[data-route]');
       if (!link || link.target || link.hasAttribute('download')) return;
       const url = new URL(link.href);
       if (url.origin !== window.location.origin) return;
-      event.preventDefault(); navigateTo(url.pathname);
+      event.preventDefault(); navigateTo((url.pathname.replace(/\/$/, '') || '/') + url.search);
     };
     window.addEventListener('popstate', handlePop); document.addEventListener('click', handleLink);
     return () => { window.removeEventListener('popstate', handlePop); document.removeEventListener('click', handleLink); };
-  }, [path]);
+  }, [route]);
   useEffect(() => {
     document.title = (titles[path] || 'Page not found') + ' | Anshu Sahani';
     document.getElementById('main-content')?.focus({ preventScroll: true });
-  }, [path]);
+  }, [path, route]);
   let page;
   switch (path) {
     case '/': page = <HomePage onNavigate={navigateTo} />; break;
@@ -59,9 +61,9 @@ export default function App() {
   return <div className="site-shell">
     <a className="skip-link" href="#main-content">Skip to content</a>
     <Header currentPath={path} onNavigate={navigateTo} onTheme={() => setThemeOpen(true)} />
-    <main id="main-content" tabIndex={-1} key={path}>{page}</main>
+    <main id="main-content" tabIndex={-1} key={route}>{page}</main>
     <Footer onNavigate={navigateTo} onTheme={() => setThemeOpen(true)} />
     <ThemeStudio open={themeOpen} onClose={() => setThemeOpen(false)} />
-    <SiteMotion route={path} />
+    <SiteMotion route={route} />
   </div>;
 }

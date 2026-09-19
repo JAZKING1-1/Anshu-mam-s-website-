@@ -1,6 +1,6 @@
 import { ArrowUpRight, CalendarDays, Mail, MessageCircle } from 'lucide-react';
 import { CONTACT_CONFIG, getEmailDraftUrl, getWhatsAppUrl } from '../config/contact';
-import { BookingForm } from '../components/BookingForm';
+import { BookingForm, InstagramMark } from '../components/BookingForm';
 import './inner-experience.css';
 
 export const ContactPage = () => {
@@ -11,7 +11,7 @@ export const ContactPage = () => {
         <div data-reveal>
           <p className="eyebrow">Let’s connect</p>
           <h1>A little hello.<br /><em>A new possibility.</em></h1>
-          <p>Whether you are ready for a new chapter or simply curious about coaching, you are welcome here. There is room for your questions.</p>
+          <p>Curious about a free Clarity Call or personal 1:1 coaching? DM CLARITY on Instagram. You are welcome to begin with your questions.</p>
         </div>
         <div className="hello-seal" aria-hidden="true">
           <svg className="inner-orbit" viewBox="0 0 250 250" fill="none"><circle cx="125" cy="125" r="109" stroke="currentColor" strokeWidth=".7" /><ellipse cx="125" cy="125" rx="84" ry="109" stroke="currentColor" strokeWidth=".6" transform="rotate(32 125 125)" /><ellipse cx="125" cy="125" rx="84" ry="109" stroke="currentColor" strokeWidth=".6" transform="rotate(-32 125 125)" /><path d="m125 8 3 8-3 8-3-8 3-8ZM234 122l8 3-8 3-8-3 8-3Z" fill="currentColor" /></svg>
@@ -20,9 +20,16 @@ export const ContactPage = () => {
       </header>
       <div className="contact-ribbon"><div className="container"><span>A real conversation.</span><i aria-hidden="true">✳</i><span>A thoughtful beginning.</span></div></div>
       <div className="container">
-        {(CONTACT_CONFIG.hasContactChannel || CONTACT_CONFIG.bookingUrl) && (
+        {(CONTACT_CONFIG.instagramUrl || CONTACT_CONFIG.hasContactChannel || CONTACT_CONFIG.bookingUrl) && (
           <section className="contact-details" aria-label="Ways to contact Anshu">
             <div className="contact-grid">
+              <article className="contact-card contact-instagram" data-reveal>
+                <InstagramMark />
+                <h2>A little hello on Instagram</h2>
+                <p>DM <strong>CLARITY</strong> to enquire about your free Clarity Call or 1:1 coaching.</p>
+                <a href={CONTACT_CONFIG.instagramUrl} className="text-link" target="_blank" rel="noopener noreferrer">Open Anshu’s Instagram <ArrowUpRight size={15} aria-hidden="true" /></a>
+                <p className="contact-handle">@{CONTACT_CONFIG.instagramHandle}</p>
+              </article>
               {CONTACT_CONFIG.email && (
                 <article className="contact-card" data-reveal>
                   <Mail size={27} strokeWidth={1.25} aria-hidden="true" />

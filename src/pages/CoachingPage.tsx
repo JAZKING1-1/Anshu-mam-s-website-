@@ -1,22 +1,25 @@
 import { ArrowUpRight, Check } from 'lucide-react';
 import { Invitation, Questions } from '../components/SiteElements';
 import { SUPPORT } from './HomePage';
+import { OfferingShowcase } from '../components/OfferingShowcase';
 import './inner-experience.css';
 
 export function CoachingPage(_props: { onNavigate: (path: string) => void }) {
   return <div className="inner-experience coaching-experience">
     <header className="coaching-masthead container">
       <div data-reveal>
-        <p className="eyebrow">One-to-one coaching for women</p>
-        <h1>Your story.<br />Your pace.<br /><em>Your way forward.</em></h1>
+        <p className="eyebrow">Work with Anshu / Coaching for women</p>
+        <h1>Life by choice.<br /><em>Not by chance.</em></h1>
       </div>
       <div className="coaching-opening" data-reveal>
         <svg className="inner-orbit coaching-emblem" viewBox="0 0 180 160" fill="none" aria-hidden="true"><path d="M25 145V78a65 65 0 0 1 130 0v67M40 145V78a50 50 0 0 1 100 0v67M55 145V78a35 35 0 0 1 70 0v67" stroke="currentColor" strokeWidth="1" /><path d="M90 24v27m-13-13h26M90 100c-18-5-27-15-28-29 17 4 26 13 28 29Zm0 24c18-5 27-15 28-29-17 4-26 13-28 29Zm0-53v74" stroke="currentColor" strokeWidth="1.3" /></svg>
-        <p>A thoughtful partnership to help you understand yourself more deeply and make choices with greater clarity, courage, and confidence.</p>
-        <a data-route href="/book" className="button button-primary">Explore working together <ArrowUpRight size={17} aria-hidden="true" /></a>
-        <span className="inner-handwritten">A little space. A meaningful shift.</span>
+        <p>Less living on autopilot. More listening to yourself. Explore a free Clarity Call or personal 1:1 coaching, with room for your needs, questions, and next chapter.</p>
+        <div className="coaching-choice-links"><a href="#clarity-call" className="text-link">Free Clarity Call <ArrowUpRight size={17} aria-hidden="true" /></a><a href="#personal-coaching" className="text-link">Personal 1:1 coaching <ArrowUpRight size={17} aria-hidden="true" /></a></div>
+        <span className="inner-handwritten">Your life. Your voice. Your choice.</span>
       </div>
     </header>
+
+    <OfferingShowcase detailed />
 
     <section className="coaching-depth">
       <div className="container coaching-depth-grid">
@@ -26,7 +29,8 @@ export function CoachingPage(_props: { onNavigate: (path: string) => void }) {
           <h2>Space to reflect.<br /><em>Support to grow.</em></h2>
           <p>You may be navigating a relationship, questioning an old pattern, or looking for a stronger sense of yourself. We begin with your lived experience and what you want to be different.</p>
           <p>Through reflective conversation, self-awareness exercises, and practical steps, we explore what feels useful to you. You remain the person making choices about your life.</p>
-          <ul className="coaching-promises">{['Individual sessions, tailored to your needs', 'A warm, respectful, non-judgemental conversation', 'Online sessions, with timing agreed together', 'Clear discussion of fees and expectations before you begin'].map(text => <li key={text}><Check size={17} aria-hidden="true" />{text}</li>)}</ul>
+          <ul className="coaching-promises">{['Individual sessions, focused on what matters to you', 'A warm, respectful, non-judgemental conversation', 'The format and timing discussed with you', 'Clear discussion of fees and expectations before you begin'].map(text => <li key={text}><Check size={17} aria-hidden="true" />{text}</li>)}</ul>
+          <a data-route href="/book?offer=personal-coaching" className="text-link">Ask Anshu about 1:1 coaching <ArrowUpRight size={17} aria-hidden="true" /></a>
         </div>
       </div>
     </section>

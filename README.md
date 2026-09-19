@@ -32,7 +32,11 @@ Theme definitions live in `src/config/theme.ts`. The first entries are published
 
 A skippable 2.1-second welcome runs once per session on the homepage, with footer replay. Scroll progress, drawing artwork, section reveals and responsive hover details respect device reduced-motion preferences and the appearance menu’s **Use less motion** setting. The three Intention Guide tabs provide local reflection; choices are not stored or sent. See [motion notes](docs/motion-design.md).
 
-## Activate enquiries
+## Offers and enquiries
+
+The homepage and Work with me page market the source-confirmed **free Clarity Call** and **1:1 Coaching**. Shared offer content lives in `src/config/offerings.ts`. Prices for paid coaching, fixed durations and package counts are not published without confirmation.
+
+Anshu’s verified Instagram profile is the active enquiry route. Visitors choose an offer, optionally copy a prepared **CLARITY** message, then open the profile to send it themselves. The site does not send messages or reserve appointments. Offer links preserve their selection through `/book?offer=clarity-call` and `/book?offer=personal-coaching`, including browser back/forward navigation.
 
 Publish only verified public contact destinations. Set one or more build-time values on the existing Render service, then rebuild:
 
@@ -40,7 +44,7 @@ Publish only verified public contact destinations. Set one or more build-time va
 - `VITE_CONTACT_EMAIL` — Anshu’s public contact email.
 - `VITE_WHATSAPP_NUMBER` — country code and number, digits only.
 
-See `.env.example`. These values are public, so never use secrets. Without a configured channel, the site explains that booking details are being prepared. Email and WhatsApp flows let visitors review a draft and choose to send it in the selected app; they do not pretend to submit a form.
+See `.env.example`. These values are public, so never use secrets. The Instagram route stays available alongside any configured scheduling, email or WhatsApp channel. Email and WhatsApp flows let visitors review a draft and choose to send it in the selected app; they do not pretend to submit a form.
 
 ## Content and routes
 

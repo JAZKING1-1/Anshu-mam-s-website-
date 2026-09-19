@@ -1,10 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
-import { ArrowUpRight, CalendarDays, Check, Mail, MessageCircle } from 'lucide-react';
+import { ArrowUpRight, CalendarDays, Check, Copy, Mail, MessageCircle } from 'lucide-react';
 import { CONTACT_CONFIG, getEmailDraftUrl, getWhatsAppUrl } from '../config/contact';
 import './booking.css';
 
+type EnquiryOffer = 'clarity-call' | 'personal-coaching';
+type CopyStatus = 'idle' | 'copying' | 'copied' | 'manual';
+const readOffer = (): EnquiryOffer => new URLSearchParams(window.location.search).get('offer') === 'personal-coaching' ? 'personal-coaching' : 'clarity-call';
+const enquiryMessages: Record<EnquiryOffer, string> = {
+  'clarity-call': 'CLARITY\nHi Anshu, I would like to enquire about your free Clarity Call. Please share the next steps and availability. Thank you.',
+  'personal-coaching': 'CLARITY\nHi Anshu, I am interested in 1:1 coaching. Please share how we can begin, along with the session format, fees and availability. Thank you.',
+};
+
+export const InstagramMark = () => <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4.2" /><circle cx="17.4" cy="6.7" r=".85" fill="currentColor" stroke="none" /></svg>;
+
 export const BookingForm = () => {
+  const requestedOffer = readOffer();
+  const [offer, setOffer] = useState<EnquiryOffer>(requestedOffer);
+  const [copyStatus, setCopyStatus] = useState<CopyStatus>('idle');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [topic, setTopic] = useState('');
@@ -12,6 +25,37 @@ export const BookingForm = () => {
   const [draft, setDraft] = useState('');
   const [error, setError] = useState('');
   const draftHeading = useRef<HTMLHeadingElement>(null);
+  const instagramMessage = useRef<HTMLTextAreaElement>(null);
+  const copyAttempt = useRef(0);
+
+  const chooseOffer = (next: EnquiryOffer) => {
+    copyAttempt.current += 1;
+    setOffer(next);
+    setCopyStatus('idle');
+    setDraft('');
+  };
+
+  useEffect(() => { chooseOffer(requestedOffer); }, [requestedOffer]);
+  useEffect(() => {
+    const updateOffer = () => chooseOffer(readOffer());
+    window.addEventListener('popstate', updateOffer);
+    return () => window.removeEventListener('popstate', updateOffer);
+  }, []);
+
+  const copyEnquiry = async () => {
+    const attempt = ++copyAttempt.current;
+    setCopyStatus('copying');
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(enquiryMessages[offer]);
+      if (attempt === copyAttempt.current) setCopyStatus('copied');
+    } catch {
+      if (attempt !== copyAttempt.current) return;
+      setCopyStatus('manual');
+      instagramMessage.current?.focus();
+      instagramMessage.current?.select();
+    }
+  };
 
   useEffect(() => {
     if (draft) draftHeading.current?.focus();
@@ -27,7 +71,7 @@ export const BookingForm = () => {
     setDraft([
       'Hello Anshu,',
       '',
-      'I would like to find out more about coaching and arrange an introductory conversation.',
+      offer === 'clarity-call' ? 'I would like to enquire about your free Clarity Call.' : 'I would like to enquire about 1:1 coaching, including session format, fees and availability.',
       '',
       `Name: ${name.trim()}`,
       `Email: ${email.trim()}`,
@@ -43,7 +87,7 @@ export const BookingForm = () => {
         <div className="booking-introduction">
           <p className="eyebrow">Your next chapter</p>
           <h2 id="booking-heading">It can begin with<br /><em>a conversation.</em></h2>
-          <p>You do not need to have all the answers. A first conversation is a chance to share what brings you here and see whether coaching feels right for you.</p>
+          <p>You do not need to have all the answers. Choose a free Clarity Call or enquire about 1:1 coaching, then send Anshu a message on Instagram to explore your next step.</p>
           <ul className="booking-reassurance">
             <li><Check aria-hidden="true" size={17} />Space for your questions</li>
             <li><Check aria-hidden="true" size={17} />A thoughtful look at your next step</li>
@@ -53,6 +97,21 @@ export const BookingForm = () => {
         </div>
 
         <div className="booking-panel">
+          <fieldset className="booking-offer-select">
+            <legend>What would you like to explore?</legend>
+            <div className="booking-offer-options">
+              <label>
+                <input type="radio" name="enquiry-offer" value="clarity-call" checked={offer === 'clarity-call'} onChange={() => chooseOffer('clarity-call')} />
+                <span><strong>Free Clarity Call</strong><small>A first conversation</small></span>
+                <Check size={16} aria-hidden="true" />
+              </label>
+              <label>
+                <input type="radio" name="enquiry-offer" value="personal-coaching" checked={offer === 'personal-coaching'} onChange={() => chooseOffer('personal-coaching')} />
+                <span><strong>1:1 coaching</strong><small>Explore working together</small></span>
+                <Check size={16} aria-hidden="true" />
+              </label>
+            </div>
+          </fieldset>
           {CONTACT_CONFIG.bookingUrl && (
             <div className="booking-scheduler">
               <CalendarDays size={25} strokeWidth={1.4} aria-hidden="true" />
@@ -63,14 +122,22 @@ export const BookingForm = () => {
             </div>
           )}
 
-          {!CONTACT_CONFIG.bookingUrl && !CONTACT_CONFIG.hasContactChannel && (
-            <div className="booking-soon">
-              <span className="booking-icon"><CalendarDays size={29} strokeWidth={1.25} aria-hidden="true" /></span>
-              <p className="eyebrow">A little space to begin</p>
-              <h3>Bookings will open here soon.</h3>
-              <p>Details for introductory conversations are being prepared. In the meantime, get to know Anshu’s story and her approach to coaching.</p>
-              <a className="button button-outline" data-route href="/about">Meet Anshu <ArrowUpRight size={17} aria-hidden="true" /></a>
-              <p className="booking-note">This page is not accepting booking requests yet.</p>
+          {CONTACT_CONFIG.instagramUrl && (
+            <div className="instagram-enquiry">
+              <div className="instagram-enquiry-heading"><span className="booking-icon"><InstagramMark /></span><p className="eyebrow">A real conversation starts here</p></div>
+              <h3>DM <em>CLARITY.</em><br />Let’s begin.</h3>
+              <p>Open Anshu’s Instagram profile and send <strong>CLARITY</strong> in a direct message. You can use the starting message below, or write in your own words.</p>
+              <div className="instagram-message-field">
+                <label htmlFor="instagram-enquiry-message">Your starting message <span>(optional)</span></label>
+                <textarea ref={instagramMessage} id="instagram-enquiry-message" rows={5} readOnly value={enquiryMessages[offer]} aria-describedby="instagram-copy-status" />
+              </div>
+              <div className="instagram-enquiry-actions">
+                <button type="button" className="button button-outline" onClick={copyEnquiry} disabled={copyStatus === 'copying'}>{copyStatus === 'copied' ? <Check size={17} aria-hidden="true" /> : <Copy size={17} aria-hidden="true" />}{copyStatus === 'copied' ? 'Message copied' : copyStatus === 'copying' ? 'Copying…' : 'Copy enquiry'}</button>
+                <a className="button button-primary" href={CONTACT_CONFIG.instagramUrl} target="_blank" rel="noopener noreferrer">Open Instagram profile <ArrowUpRight size={17} aria-hidden="true" /></a>
+              </div>
+              <p className="instagram-copy-status" id="instagram-copy-status" role="status">{copyStatus === 'copied' ? 'Copied. Paste your enquiry into a direct message on Instagram and send when you are ready.' : copyStatus === 'manual' ? 'The message is selected. Copy it using your device’s copy command, then paste it into Instagram.' : 'No message is sent by this website. You choose when to send it on Instagram.'}</p>
+              <p className="instagram-profile-name">@{CONTACT_CONFIG.instagramHandle}</p>
+              <p className="booking-note">Instagram opens in a new tab and may ask you to sign in. Sending a message is an enquiry; session details and availability are confirmed with Anshu.</p>
             </div>
           )}
 
@@ -89,7 +156,7 @@ export const BookingForm = () => {
             </div>
           ) : (
             <form onSubmit={prepareDraft} className="booking-form">
-              <h3>{CONTACT_CONFIG.bookingUrl ? 'Prefer to ask a question first?' : 'Introduce yourself'}</h3>
+              <h3>Prefer email or WhatsApp?</h3>
               <p>A few simple details are enough. This form prepares a message for you to review and send.</p>
               {error && <p className="booking-error" role="alert">{error}</p>}
               <div className="form-grid">

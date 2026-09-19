@@ -14,6 +14,9 @@ const email = /^[^\s@?&#]+@[^\s@?&#]+\.[^\s@?&#]+$/.test(emailSetting) ? emailSe
 const phoneSetting = readSetting(import.meta.env.VITE_WHATSAPP_NUMBER).replace(/[\s()+-]/g, '');
 const whatsappRaw = /^[1-9]\d{7,14}$/.test(phoneSetting) ? phoneSetting : '';
 const bookingUrl = safeHttpsUrl(import.meta.env.VITE_BOOKING_URL);
+// Confirmed against Anshu's supplied Instagram profile screenshot.
+const instagramHandle = 'anshu.sahani.9__lifedesigner';
+const instagramUrl = `https://www.instagram.com/${instagramHandle}/`;
 
 export const CONTACT_CONFIG = {
   name: 'Anshu Sahani',
@@ -23,9 +26,11 @@ export const CONTACT_CONFIG = {
   whatsappRaw,
   email,
   bookingUrl,
+  instagramHandle,
+  instagramUrl,
   hasContactChannel: Boolean(email || whatsappRaw),
   location: 'Online coaching',
-  socials: { instagram: '', linkedin: '', youtube: '' },
+  socials: { instagram: instagramUrl, linkedin: '', youtube: '' },
   bookingCallDuration: '',
   bookingCallPrice: '',
 };

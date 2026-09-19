@@ -9,7 +9,7 @@ export function Header({ currentPath = '/', onTheme }: { currentPath?: string; o
     const key = (e: KeyboardEvent) => { if (e.key === 'Escape' && open) { setOpen(false); toggleRef.current?.focus(); } };
     window.addEventListener('keydown', key); return () => window.removeEventListener('keydown', key);
   }, [open]);
-  const links = [['Home', '/'], ['My Story', '/about'], ['Coaching', '/coaching'], ['Client Stories', '/testimonials']];
+  const links = [['Home', '/'], ['My Story', '/about'], ['Work with me', '/coaching'], ['Client Stories', '/testimonials']];
   return <header className="site-header"><div className="container header-inner">
     <a href="/" data-route className="brand" aria-label="Anshu Sahani, home"><BrandMark /><span>Anshu Sahani<small>LIFE & RELATIONSHIP COACH</small></span></a>
     <nav className="desktop-nav" aria-label="Main navigation">{links.map(([label, href]) => <a key={href} data-route href={href} aria-current={currentPath === href ? 'page' : undefined}>{label}</a>)}</nav>
