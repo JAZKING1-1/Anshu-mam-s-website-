@@ -1,12 +1,12 @@
-import React from 'react';
 import { BookingForm } from '../components/BookingForm';
-import { FAQSection } from '../components/FAQSection';
 
-export const BookingPage: React.FC = () => {
-  return (
-    <div className="pt-6">
-      <BookingForm />
-      <FAQSection />
-    </div>
-  );
-};
+export const BookingPage = () => (
+  <div className="container">
+    <header className="page-intro">
+      <p className="eyebrow">Connect with Anshu</p>
+      <h1 className="page-heading">A gentle first step.</h1>
+      <p>A little curiosity. An open conversation. A space to explore what you need next.</p>
+    </header>
+    <BookingForm />
+  </div>
+);

@@ -1,0 +1,40 @@
+.booking-section { padding-block: clamp(2rem, 5vw, 5rem); }
+.booking-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(2rem, 7vw, 7rem); }
+.booking-introduction h2 { font-family: var(--serif); font-size: clamp(2.3rem, 4vw, 4rem); font-weight: 400; line-height: 1.13; letter-spacing: -.035em; margin: 1rem 0 1.6rem; }
+.booking-introduction h2 em { font-weight: 400; color: var(--accent-text); }
+.booking-introduction > p:not(.eyebrow), .booking-panel p { line-height: 1.8; color: var(--muted); }
+.booking-reassurance { list-style: none; padding: 0; margin: 1.8rem 0; display: grid; gap: .85rem; }
+.booking-reassurance li { display: flex; align-items: center; gap: .75rem; }
+.booking-reassurance svg { color: var(--accent-text); flex-shrink: 0; }
+.booking-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: clamp(1.5rem, 3.6vw, 3rem); }
+.booking-panel h3 { font-family: var(--serif); font-size: clamp(1.9rem, 3vw, 2.6rem); font-weight: 400; letter-spacing: -.025em; line-height: 1.2; margin: 0 0 1rem; }
+.booking-panel .eyebrow { margin-block: 1.6rem 1rem; }
+.booking-icon { display: inline-flex; padding: 1rem; border-radius: 50%; color: var(--accent-text); background: var(--soft); }
+.booking-panel .button { margin-top: 1.3rem; }
+.booking-note { font-size: .81rem; line-height: 1.75; color: var(--muted); margin-top: 1.5rem; }
+.booking-introduction > .booking-note { max-width: 29rem; }
+.booking-scheduler + .booking-form, .booking-scheduler + .booking-draft { border-top: 1px solid var(--line); padding-top: 2rem; margin-top: 2rem; }
+.booking-form .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.booking-form .field { margin-block: 1.3rem; min-width: 0; }
+.booking-form .field label { display: block; font-size: .82rem; margin-bottom: .6rem; color: var(--ink); }
+.booking-form .field input, .booking-form .field select { display: block; width: 100%; box-sizing: border-box; border: 1px solid var(--line); padding: .85rem; border-radius: 2px; background: var(--paper); color: var(--ink); font: inherit; font-size: .94rem; min-height: 48px; }
+.booking-form .field input:focus, .booking-form .field select:focus { outline: 2px solid var(--ink); outline-offset: 2px; }
+.booking-optional { font-size: .75rem; color: var(--muted); }
+.booking-consent { display: flex; gap: .75rem; align-items: flex-start; font-size: .79rem; line-height: 1.7; color: var(--muted); margin-top: 1.5rem; }
+.booking-consent input { width: 1.1rem; height: 1.1rem; margin: .2rem 0 0; flex-shrink: 0; accent-color: var(--accent-text); }
+.booking-consent a { font-size: inherit; }
+.booking-error { border-left: 3px solid var(--accent); padding: .8rem 1rem; background: var(--soft); }
+.booking-preview { font-family: var(--sans); font-size: .86rem; line-height: 1.8; color: var(--ink); white-space: pre-wrap; overflow-wrap: anywhere; background: var(--paper); border: 1px solid var(--line); padding: 1.25rem; margin-top: 1.5rem; }
+.booking-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+.booking-edit { display: inline-block; margin-top: 1.4rem; background: none; border: 0; padding: .25rem 0; cursor: pointer; font: inherit; font-size: .85rem; }
+.contact-details { margin: 2.5rem 0; }
+.contact-details .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1.5rem; }
+.contact-details .contact-card { padding: 2rem; border: 1px solid var(--line); background: var(--surface); }
+.contact-card svg { color: var(--accent-text); }
+.contact-card h2 { font-family: var(--serif); font-size: 1.7rem; font-weight: 400; margin: 1rem 0 .6rem; }
+.contact-card p { line-height: 1.75; color: var(--muted); font-size: .9rem; }
+.contact-card .text-link { display: inline-block; margin-top: 1rem; overflow-wrap: anywhere; }
+.legal-content { max-width: 800px; padding-bottom: 5rem; }
+.legal-content h2 { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; line-height: 1.3; margin: 2.3rem 0 .8rem; }
+.legal-content p { color: var(--muted); line-height: 1.9; margin: 0 0 1rem; }
+@media (max-width: 760px) { .booking-layout { grid-template-columns: 1fr; gap: 2rem; } .booking-form .form-grid { grid-template-columns: 1fr; gap: 0; } .booking-form .form-grid .field + .field { margin-top: 0; } }

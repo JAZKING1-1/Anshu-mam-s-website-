@@ -1,32 +1,48 @@
-# React + TypeScript + Vite
+# Anshu Sahani — life and relationship coaching
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A calm, editorial React/TypeScript website in the existing Anshu repository. Original supplied portraits, a source-grounded My Story, five original client videos, responsive navigation, and a browser-local appearance studio.
 
-Currently, two official plugins are available:
+## Run and build
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `npm ci`
+- `npm run dev`
+- `npm run build:tsc` — TypeScript validation and production build.
+- `npm run preview` — preview the production output.
 
-## React Compiler
+The existing Render static service uses `dist`. No new hosting service or repository is required. `render.yaml` includes a `/* → /index.html` rewrite for direct page visits. If the existing service is not Blueprint-managed, ensure the same rewrite exists in that service's Redirects/Rewrites settings before deploying. See [Render documentation](https://render.com/docs/redirects-rewrites).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Appearance
 
-## Expanding the Oxlint configuration
+Visitors can use the palette icon in the header or the footer appearance link. Four presets (Rose & ivory, Sage sanctuary, Lavender dusk, Sand & gold), three typefaces, and a custom accent are available. Choices are saved only in that visitor's browser under `anshu-appearance`.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Site-wide palette definitions and default ordering are in `src/config/theme.ts`. The first palette and first typeface are the published defaults; matching initial CSS tokens are in `src/index.css`. Custom accents automatically choose contrasting button text and use a safe heading colour when needed. Fonts are hosted locally with their licences.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+## Activate enquiries
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+The previous telephone and social values were placeholders. No unverified contact destinations are published.
+
+Set one or more verified **public** build-time values on the existing Render service, then rebuild:
+
+- `VITE_BOOKING_URL` — an HTTPS scheduling URL
+- `VITE_CONTACT_EMAIL` — Anshu's public contact email
+- `VITE_WHATSAPP_NUMBER` — country code and number, digits only
+
+See `.env.example`. These variables are included in the public website, so never put secrets in them. With no configured channel, the site honestly shows that booking details are being prepared. With email or WhatsApp configured, visitors review a draft and choose to send it in the selected app. There is no pretend form submission, database, payment flow, or mailing list.
+
+## Content and media
+
+- `src/pages/AboutPage.tsx`: edited first-person story grounded in the supplied My Story document.
+- `public/images`: four original Drive portraits, converted to metadata-free WebP.
+- `public/testimonials`: complete original videos, compressed to about 22.4 MB total with unchanged audio, native controls, and no autoplay.
+- `docs/content-sources.md`: provenance overview.
+- `docs/brand-research.md`: research and references.
+
+Full source documents and unrelated local testimonial uploads have not been added to the repository. Some supplied videos contain baked captions; a complete reviewed caption/transcript set is not available.
+
+## Routes
+
+`/`, `/about`, `/coaching`, `/testimonials`, `/story-wall` (client stories alias), `/book`, `/contact`, `/privacy`, `/terms`. Unknown routes show a recovery page.
+
+## Verification
+
+TypeScript and Vite production build pass. Desktop and mobile layouts, all main routes, mobile navigation, FAQ controls, palette/font persistence, and custom-colour contrast were checked. All five encoded videos decode successfully; their AAC audio matches the supplied sources. Live Render verification still requires selecting the existing workspace and deployment.

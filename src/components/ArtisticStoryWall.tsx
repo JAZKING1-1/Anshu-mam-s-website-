@@ -55,7 +55,7 @@ export const ArtisticStoryWall: React.FC<ArtisticStoryWallProps> = ({ onNavigate
 
   return (
     <section id="artistic-story-wall" className="py-24 bg-[#FFFDF9] relative overflow-hidden border-y border-[#E89BB6]/30">
-      
+
       {/* Background Abstract Art Blobs */}
       <WatercolorBlobSVG className="top-10 left-[-5%] w-96 h-96" color="#FCEBF1" />
       <WatercolorBlobSVG className="bottom-10 right-[-5%] w-96 h-96" color="#F0F7E6" />
@@ -64,7 +64,7 @@ export const ArtisticStoryWall: React.FC<ArtisticStoryWallProps> = ({ onNavigate
       <div className="absolute inset-0 bg-[radial-gradient(#C95D86_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Gallery Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 bg-[#FCEBF1] border border-[#C95D86]/40 px-5 py-2 rounded-full text-xs font-bold text-[#7D2548] shadow-xs">
@@ -100,7 +100,7 @@ export const ArtisticStoryWall: React.FC<ArtisticStoryWallProps> = ({ onNavigate
 
         {/* Artistic Wall Collage Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-start">
-          
+
           {/* Render Pinned Polaroid Photo Cards */}
           {polaroids.map((pol) => (
             <div
@@ -147,7 +147,7 @@ export const ArtisticStoryWall: React.FC<ArtisticStoryWallProps> = ({ onNavigate
           ))}
 
           {/* Render Story Wall Beats as Taped Notes */}
-          {STORY_WALL_DATA.map((story, idx) => (
+          {STORY_WALL_DATA.map((story) => (
             <div
               key={story.id}
               onClick={() => setActiveStory(story)}
@@ -204,7 +204,7 @@ export const ArtisticStoryWall: React.FC<ArtisticStoryWallProps> = ({ onNavigate
         {activeStory && (
           <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-up">
             <div className="bg-[#FFF9F4] rounded-4xl max-w-2xl w-full p-8 sm:p-10 border-2 border-[#E89BB6] shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
-              
+
               <button
                 onClick={() => setActiveStory(null)}
                 className="absolute top-6 right-6 w-9 h-9 rounded-full bg-white border border-[#E89BB6] text-[#3D1F2D] flex items-center justify-center hover:bg-[#FCEBF1] transition-colors cursor-pointer"
@@ -269,7 +269,7 @@ export const ArtisticStoryWall: React.FC<ArtisticStoryWallProps> = ({ onNavigate
               >
                 <X className="w-6 h-6" />
               </button>
-              
+
               <img
                 src={activeMediaUrl}
                 alt="Polaroid story media"

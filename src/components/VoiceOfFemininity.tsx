@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { TESTIMONIALS_DATA } from '../data/testimonials';
 import { STORY_WALL_DATA } from '../data/storyWall';
-import { BloomingLotusSVG, AnimatedCageSVG } from './AnimatedGraphics';
-import { Quote, Star, Play, X, Sparkles, Heart, ArrowRight, Image as ImageIcon, ZoomIn } from 'lucide-react';
+import { Quote, Star, Play, X, Sparkles, ArrowRight, Image as ImageIcon, ZoomIn } from 'lucide-react';
 
 interface VoiceOfFemininityProps {
   onNavigate?: (path: string) => void;
@@ -33,13 +32,13 @@ export const VoiceOfFemininity: React.FC<VoiceOfFemininityProps> = ({ onNavigate
 
   return (
     <section id="voice-of-femininity" className="py-24 bg-gradient-to-b from-[#FFF9F4] via-[#FCEBF1]/60 to-[#FFF9F4] relative overflow-hidden">
-      
+
       {/* Background Soft Glow Accents */}
       <div className="absolute top-10 left-[-5%] w-96 h-96 bg-[#E89BB6]/30 rounded-full blur-3xl pointer-events-none animate-float"></div>
       <div className="absolute bottom-10 right-[-5%] w-96 h-96 bg-[#CDE0B7]/35 rounded-full blur-3xl pointer-events-none animate-float" style={{ animationDelay: '2s' }}></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
           <div className="inline-flex items-center gap-2 bg-[#FCEBF1] border border-[#C95D86]/30 px-4 py-1.5 rounded-full text-xs font-bold text-[#7D2548] shadow-xs">
@@ -107,7 +106,7 @@ export const VoiceOfFemininity: React.FC<VoiceOfFemininityProps> = ({ onNavigate
 
         {/* Masonry Collage Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-          
+
           {/* Render Video Testimonials */}
           {(filter === 'all' || filter === 'video') &&
             TESTIMONIALS_DATA.filter(t => t.videoUrl).map((item) => (
@@ -259,7 +258,7 @@ export const VoiceOfFemininity: React.FC<VoiceOfFemininityProps> = ({ onNavigate
               >
                 <X className="w-6 h-6" />
               </button>
-              
+
               {activeMedia.type === 'video' ? (
                 <video
                   src={activeMedia.url}

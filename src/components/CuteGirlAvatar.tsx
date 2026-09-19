@@ -23,7 +23,7 @@ export const CuteGirlAvatar: React.FC<CuteGirlAvatarProps> = ({ onNavigate }) =>
   const avatar = useMemo(
     () =>
       createAvatar(adventurer, {
-        seed: ['Maya'],
+        seed: 'Maya',
         backgroundColor: ['f6d8e7'],
         backgroundType: ['gradientLinear'],
         radius: 50,

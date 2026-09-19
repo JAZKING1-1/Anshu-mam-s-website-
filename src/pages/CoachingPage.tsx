@@ -1,32 +1,12 @@
-import React from 'react';
-import { CoachingOffer } from '../components/CoachingOffer';
-import { ProcessSection } from '../components/ProcessSection';
-import { TopicsSection } from '../components/TopicsSection';
-import { FinalCTA } from '../components/FinalCTA';
-
-interface CoachingPageProps {
-  onNavigate: (path: string) => void;
+import { ArrowUpRight, Check } from 'lucide-react';
+import { Invitation, Questions } from '../components/SiteElements';
+import { SUPPORT } from './HomePage';
+export function CoachingPage(_props: { onNavigate: (path: string) => void }) {
+  return <>
+    <section className="container section page-intro"><p className="eyebrow">One-to-one coaching for women</p><h1 className="page-heading">Your story. Your pace.<br /><em>Your way forward.</em></h1><p>A thoughtful partnership to help you understand yourself more deeply and make choices with greater clarity, courage, and confidence.</p><a data-route href="/book" className="button button-primary">Explore working together <ArrowUpRight size={17} /></a></section>
+    <section className="coaching-feature"><div className="container coaching-feature-grid"><img src="/images/anshu-flowers.webp" alt="Anshu in a calm moment beside flowers" width="960" height="1280" loading="lazy" /><div><p className="eyebrow">A partnership, shaped around you</p><h2>Space to reflect.<br /><em>Support to grow.</em></h2><p>You may be navigating a relationship, questioning an old pattern, or looking for a stronger sense of yourself. We begin with your lived experience and what you want to be different.</p><p>Through reflective conversation, self-awareness exercises, and practical steps, we explore what feels useful to you. You remain the person making choices about your life.</p><ul className="check-list">{['Individual sessions, tailored to your needs', 'A warm, respectful, non-judgemental conversation', 'Online sessions, with timing agreed together', 'Clear discussion of fees and expectations before you begin'].map(t => <li key={t}><Check size={17} />{t}</li>)}</ul></div></div></section>
+    <section className="container section"><div className="section-heading"><div><p className="eyebrow">What we can explore</p><h2>The things that quietly<br /><em>shape your everyday.</em></h2></div></div><div className="support-grid">{SUPPORT.map(({ number, title, copy, tag, icon: Icon }) => <article className="support-card" key={number}><div className="support-card-top"><Icon size={32} strokeWidth={1} /><span>{number}</span></div><p className="micro-label">{tag}</p><h3>{title}</h3><p>{copy}</p></article>)}</div></section>
+    <section className="container section coaching-expect"><div><p className="eyebrow">Before we begin</p><h2>A little openness.<br /><em>No pressure.</em></h2></div><div className="prose"><h3>We start with a conversation</h3><p>Your complimentary clarity call gives us space to talk about your goals and whether this coaching approach is a good fit. You can ask about session length, frequency, pricing, and availability before deciding.</p><h3>We agree on the work together</h3><p>There is no single timeline for personal growth. The focus and rhythm of sessions are discussed with you. Progress can involve reflection, practice, and small changes between conversations.</p><h3>We respect the scope of coaching</h3><p>Coaching is focused on personal growth and practical choices. It does not diagnose or treat mental health conditions, and individual experiences vary.</p></div></section>
+    <Questions /><Invitation />
+  </>;
 }
-
-export const CoachingPage: React.FC<CoachingPageProps> = ({ onNavigate }) => {
-  return (
-    <div className="pt-6">
-      <div className="max-w-4xl mx-auto px-4 text-center py-12 space-y-4">
-        <span className="text-xs uppercase tracking-widest font-semibold text-[#9C536D] bg-[#EFCBD5]/50 px-4 py-1.5 rounded-full inline-block">
-          Personalized 1:1 Coaching
-        </span>
-        <h1 className="font-serif text-4xl sm:text-5xl font-bold text-[#4A2E3B]">
-          Coaching Programs &amp; Methodology
-        </h1>
-        <p className="text-base sm:text-lg text-[#2D2729]/80 font-normal">
-          Designed specifically for women seeking emotional resilience, relationship clarity, and unshakeable self-worth.
-        </p>
-      </div>
-
-      <CoachingOffer onNavigate={onNavigate} />
-      <ProcessSection />
-      <TopicsSection />
-      <FinalCTA onNavigate={onNavigate} />
-    </div>
-  );
-};
