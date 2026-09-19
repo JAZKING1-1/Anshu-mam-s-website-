@@ -1,6 +1,6 @@
 # Anshu Sahani — life and relationship coaching
 
-A calm, editorial React/TypeScript website in the existing Anshu repository. Original supplied portraits, a source-grounded My Story, five original client videos, responsive navigation, and a browser-local appearance studio.
+A welcoming React/TypeScript website built around original portraits, a source-grounded personal story, and a confident feminine visual identity. Rich plum and berry, warm blush cream, rust and gold, fuller Fraunces typography, and responsive layouts carry the message: **Soft heart. Strong voice. Your life.**
 
 ## Run and build
 
@@ -9,40 +9,43 @@ A calm, editorial React/TypeScript website in the existing Anshu repository. Ori
 - `npm run build:tsc` — TypeScript validation and production build.
 - `npm run preview` — preview the production output.
 
-The existing Render static service uses `dist`. No new hosting service or repository is required. `render.yaml` includes a `/* → /index.html` rewrite for direct page visits. If the existing service is not Blueprint-managed, ensure the same rewrite exists in that service's Redirects/Rewrites settings before deploying. See [Render documentation](https://render.com/docs/redirects-rewrites).
+## Existing deployment
 
-## Appearance
+Use the existing GitHub repository and its `main` branch with the existing **Render Node web service**:
 
-Visitors can use the palette icon in the header or the footer appearance link. Four presets (Rose & ivory, Sage sanctuary, Lavender dusk, Sand & gold), three typefaces, and a custom accent are available. Choices are saved only in that visitor's browser under `anshu-appearance`.
+| Setting | Value |
+| --- | --- |
+| Service ID | `srv-d9jp6k9l565s739s70cg` |
+| Website | https://anshu-mam-s-website.onrender.com |
+| Build command | `npm install && npm run build` |
+| Start command | `npx vite preview --host 0.0.0.0 --port $PORT` |
 
-Site-wide palette definitions and default ordering are in `src/config/theme.ts`. The first palette and first typeface are the published defaults; matching initial CSS tokens are in `src/index.css`. Custom accents automatically choose contrasting button text and use a safe heading colour when needed. Fonts are hosted locally with their licences.
+The checked-in `render.yaml` is a legacy static-site Blueprint; it does not describe the current live Node service. Retain the existing service configuration. No recreation or hosting migration is required.
+
+TypeScript, the production build, keyboard interactions, and desktop/mobile layouts are checked before release. After pushing, verify the commit is live in this existing Render service and check the public homepage. Do not create a replacement service.
+
+## Appearance and interaction
+
+The header palette control and footer appearance link open four presets: **Rose & ritual**, **Sage & ceremony**, **Lavender & dusk**, and **Terracotta & gold**. Visitors can choose Editorial (Fraunces), Classic (Libre Baskerville), or Timeless (Georgia), plus a custom accent. Preferences stay in this browser under `anshu-appearance`; existing palette/font IDs remain compatible.
+
+Theme definitions live in `src/config/theme.ts`. The first entries are published defaults, with matching initial tokens in `src/experience.css`. Custom accents preserve readable body text, button labels and accents on dark sections. Fonts are local; sources and licences are in [public/fonts/README.md](public/fonts/README.md).
+
+A skippable 2.1-second welcome runs once per session on the homepage, with footer replay. Scroll progress, drawing artwork, section reveals and responsive hover details respect device reduced-motion preferences and the appearance menu’s **Use less motion** setting. The three Intention Guide tabs provide local reflection; choices are not stored or sent. See [motion notes](docs/motion-design.md).
 
 ## Activate enquiries
 
-The previous telephone and social values were placeholders. No unverified contact destinations are published.
+Publish only verified public contact destinations. Set one or more build-time values on the existing Render service, then rebuild:
 
-Set one or more verified **public** build-time values on the existing Render service, then rebuild:
+- `VITE_BOOKING_URL` — an HTTPS scheduling URL.
+- `VITE_CONTACT_EMAIL` — Anshu’s public contact email.
+- `VITE_WHATSAPP_NUMBER` — country code and number, digits only.
 
-- `VITE_BOOKING_URL` — an HTTPS scheduling URL
-- `VITE_CONTACT_EMAIL` — Anshu's public contact email
-- `VITE_WHATSAPP_NUMBER` — country code and number, digits only
+See `.env.example`. These values are public, so never use secrets. Without a configured channel, the site explains that booking details are being prepared. Email and WhatsApp flows let visitors review a draft and choose to send it in the selected app; they do not pretend to submit a form.
 
-See `.env.example`. These variables are included in the public website, so never put secrets in them. With no configured channel, the site honestly shows that booking details are being prepared. With email or WhatsApp configured, visitors review a draft and choose to send it in the selected app. There is no pretend form submission, database, payment flow, or mailing list.
+## Content and routes
 
-## Content and media
+Original photographs are optimised WebP in `public/images`. Five original client videos are in `public/testimonials`, with native controls and no autoplay. Some videos contain baked captions; a complete reviewed caption/transcript set is not available.
 
-- `src/pages/AboutPage.tsx`: edited first-person story grounded in the supplied My Story document.
-- `public/images`: four original Drive portraits, converted to metadata-free WebP.
-- `public/testimonials`: complete original videos, compressed to about 22.4 MB total with unchanged audio, native controls, and no autoplay.
-- `docs/content-sources.md`: provenance overview.
-- `docs/brand-research.md`: research and references.
+See [content sources](docs/content-sources.md), [brand research](docs/brand-research.md), and [design system](DESIGN_SYSTEM.md). Private source documents are not distributed with the website.
 
-Full source documents and unrelated local testimonial uploads have not been added to the repository. Some supplied videos contain baked captions; a complete reviewed caption/transcript set is not available.
-
-## Routes
-
-`/`, `/about`, `/coaching`, `/testimonials`, `/story-wall` (client stories alias), `/book`, `/contact`, `/privacy`, `/terms`. Unknown routes show a recovery page.
-
-## Verification
-
-TypeScript and Vite production build pass. Desktop and mobile layouts, all main routes, mobile navigation, FAQ controls, palette/font persistence, and custom-colour contrast were checked. All five encoded videos decode successfully; their AAC audio matches the supplied sources. Live Render verification still requires selecting the existing workspace and deployment.
+Routes: `/`, `/about`, `/coaching`, `/testimonials`, `/story-wall` (client stories alias), `/book`, `/contact`, `/privacy`, and `/terms`. Unknown routes offer a recovery page.

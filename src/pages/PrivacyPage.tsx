@@ -12,7 +12,8 @@ export const PrivacyPage = () => (
       <h2>When you browse</h2>
       <p>You can explore this website without creating an account. This website’s application does not include advertising trackers or an analytics integration. The hosting provider may process technical information, such as your IP address and request details, to deliver and protect the site.</p>
       <h2>Your appearance preferences</h2>
-      <p>If you customise the colours or typography, your preferences are saved in this browser, so your chosen appearance can return on your next visit. This setting is stored on your device and is not sent to Anshu by the site. You can remove it by clearing this site’s browser data.</p>
+      <p>If you customise the colours, typography or motion, your preferences are saved in this browser for your next visit. The site also remembers whether you have seen the welcome animation during the current browser session. These settings stay on your device and are not sent to Anshu by the site. You can reset your preferences in the appearance menu or clear this site’s browser data.</p>
+      <p>The “What’s on your heart?” choices are a private way to explore the website. Your selection is not saved or sent anywhere.</p>
       <h2>When you make an enquiry</h2>
       <p>When contact options are available, the enquiry form asks for your name, email address and an optional topic. These details stay in the page while you prepare your message. The form does not submit them to a website database, send a message automatically or confirm an appointment.</p>
       <p>Choosing to open an email or WhatsApp draft passes your draft details to the selected service. You decide whether to send it there. Please share only what is needed to make your enquiry, and avoid including health information or other sensitive personal details.</p>

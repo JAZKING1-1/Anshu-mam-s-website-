@@ -10,6 +10,7 @@ import { ContactPage } from './pages/ContactPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
 import { ThemeStudio } from './components/ThemeStudio';
+import { SiteMotion } from './components/SiteMotion';
 import { ArrowRight } from 'lucide-react';
 
 const titles: Record<string, string> = {
@@ -22,7 +23,7 @@ export default function App() {
   const [path, setPath] = useState(window.location.pathname.replace(/\/$/, '') || '/');
   const [themeOpen, setThemeOpen] = useState(false);
   const navigateTo = (next: string) => {
-    if (next === path) { window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }); return; }
+    if (next === path) { window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motionPreference === 'reduced' ? 'instant' : 'smooth' }); return; }
     window.history.pushState({}, '', next); setPath(next);
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
@@ -61,5 +62,6 @@ export default function App() {
     <main id="main-content" tabIndex={-1} key={path}>{page}</main>
     <Footer onNavigate={navigateTo} onTheme={() => setThemeOpen(true)} />
     <ThemeStudio open={themeOpen} onClose={() => setThemeOpen(false)} />
+    <SiteMotion route={path} />
   </div>;
 }

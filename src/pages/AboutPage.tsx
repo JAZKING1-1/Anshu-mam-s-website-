@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { Botanical, Invitation } from '../components/SiteElements';
+import './inner-experience.css';
 
 interface AboutPageProps {
   onNavigate: (path: string) => void;
@@ -48,75 +49,57 @@ const chapters = [
 ];
 
 export const AboutPage = ({ onNavigate }: AboutPageProps) => (
-  <>
-    <header className="page-intro container section">
-      <p className="eyebrow">My story</p>
-      <h1 className="page-heading">From silence<br />to <em>my own voice.</em></h1>
-      <p>Before I supported other women in finding themselves,<br className="desktop-break" /> I began the journey of coming back to myself.</p>
+  <div className="inner-experience story-experience">
+    <header className="story-masthead">
+      <div className="container story-masthead-grid">
+        <div className="story-masthead-copy" data-reveal>
+          <p className="eyebrow">The woman behind the work</p>
+          <h1>From silence<br />to <em>my own voice.</em></h1>
+          <p>Before I supported other women in finding themselves, I began the journey of coming back to myself.</p>
+          <span className="inner-handwritten">This is my story.</span>
+        </div>
+        <figure className="story-masthead-portrait" data-reveal>
+          <svg className="inner-orbit story-halo" viewBox="0 0 400 500" fill="none" aria-hidden="true"><ellipse cx="200" cy="250" rx="186" ry="237" stroke="currentColor" strokeWidth=".7" /><ellipse cx="200" cy="250" rx="173" ry="247" stroke="currentColor" strokeWidth=".5" transform="rotate(12 200 250)" /><path d="m343 32 5 15 15 5-15 5-5 15-5-15-15-5 15-5 5-15Z" fill="currentColor" /></svg>
+          <img src="/images/anshu-hero.webp" width="648" height="945" alt="Anshu in a sage outfit, standing beside flowers in a warmly lit room" fetchPriority="high" />
+          <figcaption>Anshu Sahani<span>LIFE COACH FOR WOMEN</span></figcaption>
+        </figure>
+      </div>
+      <div className="story-identity container"><span>A woman.</span><i aria-hidden="true">✳</i><span>A mother.</span><i aria-hidden="true">✳</i><span>A lifelong learner.</span></div>
     </header>
 
-    <section className="story-intro container section" aria-labelledby="meet-anshu">
-      <figure className="story-portrait">
-        <img src="/images/anshu-hero.webp" width="648" height="945" alt="Anshu in a sage outfit, standing beside flowers in a warmly lit room" fetchPriority="high" />
-        <figcaption className="photo-note">Anshu Sahani · Life coach for women</figcaption>
-      </figure>
-      <div className="prose">
-        <p className="eyebrow">A little about me</p>
-        <h2 id="meet-anshu">Hello, I’m Anshu.<br /><em>I’m glad you’re here.</em></h2>
+    <section className="story-hello container section" aria-labelledby="meet-anshu">
+      <div data-reveal><p className="eyebrow">A little about me</p><h2 id="meet-anshu">Hello, I’m Anshu.<br /><em>I’m glad you’re here.</em></h2><span className="story-flower inner-star" aria-hidden="true">✳</span></div>
+      <div className="prose" data-reveal>
         <p>I know what it can feel like to be the strong one. To be present for everyone, yet struggle to hear your own needs. To build a life that looks full, while feeling that something within you is missing.</p>
         <p>For a long time, that was my story, too. My path to coaching began with learning to make room for myself: my feelings, my choices, and the person I wanted to become.</p>
         <p>It is the heart of the space I offer today. A place to be heard, to understand yourself more clearly, and to explore what comes next.</p>
-        <button type="button" className="text-link" onClick={() => onNavigate('/coaching')}>Explore working together <ArrowUpRight size={17} /></button>
+        <button type="button" className="text-link" onClick={() => onNavigate('/coaching')}>Explore working together <ArrowUpRight size={17} aria-hidden="true" /></button>
       </div>
     </section>
 
-    <section className="story-body container section" aria-labelledby="journey-heading">
-      <div className="story-section-heading">
-        <p className="eyebrow">The journey that brought me here</p>
-        <h2 id="journey-heading">One choice.<br /><em>Then another.</em></h2>
-      </div>
-      {chapters.map((chapter) => (
-        <article className="story-chapter" key={chapter.number}>
-          <span className="story-chapter-number" aria-hidden="true">{chapter.number}</span>
-          <div className="prose">
-            <p className="eyebrow">{chapter.period}</p>
-            <h3>{chapter.title}</h3>
-            {chapter.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          </div>
-        </article>
-      ))}
-    </section>
-
-    <section className="section container" aria-labelledby="beyond-heading">
-      <div className="story-section-heading">
-        <p className="eyebrow">Beyond the sessions</p>
-        <h2 id="beyond-heading">A few moments<br /><em>from my world.</em></h2>
-        <p className="muted">Mountain views, flowers, and everyday moments.<br className="desktop-break" /> A glimpse of the woman behind the work.</p>
-      </div>
-      <div className="story-gallery">
-        <figure>
-          <img src="/images/anshu-mountains.webp" width="960" height="1280" alt="Anshu outdoors with snow-covered mountains behind her" loading="lazy" />
-          <figcaption className="photo-note">Under an open sky</figcaption>
-        </figure>
-        <figure>
-          <img src="/images/anshu-flowers.webp" width="960" height="1280" alt="Anshu standing beside an arrangement of pink and cream flowers" loading="lazy" />
-          <figcaption className="photo-note">A moment with the flowers</figcaption>
-        </figure>
-        <figure>
-          <img src="/images/anshu-personal.webp" width="686" height="1280" alt="Anshu smiling beside a window in a burgundy patterned outfit" loading="lazy" />
-          <figcaption className="photo-note">A little everyday warmth</figcaption>
-        </figure>
+    <section className="story-timeline section" aria-labelledby="journey-heading">
+      <div className="container story-timeline-grid">
+        <div className="story-timeline-heading" data-reveal><p className="eyebrow">The journey that brought me here</p><h2 id="journey-heading">One choice.<br /><em>Then another.</em></h2><p>Not a straight line.<br />A journey back to myself.</p><Botanical /></div>
+        <div className="story-chapters">{chapters.map(chapter => (
+          <article className="timeline-chapter" key={chapter.number} data-reveal>
+            <span className="timeline-number" aria-hidden="true">{chapter.number}</span>
+            <div><p className="eyebrow">{chapter.period}</p><h3>{chapter.title}</h3>{chapter.paragraphs.map(paragraph => <p className="timeline-paragraph" key={paragraph}>{paragraph}</p>)}</div>
+          </article>
+        ))}</div>
       </div>
     </section>
 
-    <section className="story-closing section" aria-labelledby="story-closing-heading">
-      <Botanical />
-      <div className="container prose">
-        <p className="eyebrow">Where we can begin</p>
-        <h2 id="story-closing-heading">You can be there for others.<br /><em>And be here for yourself.</em></h2>
-        <p>If you have always been the strong one, there is space here for you, too.</p>
+    <section className="story-moments section" aria-labelledby="beyond-heading">
+      <div className="container">
+        <div className="story-moments-heading" data-reveal><div><p className="eyebrow">Beyond the sessions</p><h2 id="beyond-heading">A few moments<br /><em>from my world.</em></h2></div><p>Mountain views, flowers, and everyday moments.<br className="desktop-break" /> A glimpse of the woman behind the work.</p></div>
+        <div className="story-gallery">
+          <figure data-reveal><img src="/images/anshu-mountains.webp" width="960" height="1280" alt="Anshu outdoors with snow-covered mountains behind her" loading="lazy" /><figcaption><span>01</span>Under an open sky</figcaption></figure>
+          <figure data-reveal><img src="/images/anshu-flowers.webp" width="960" height="1280" alt="Anshu standing beside an arrangement of pink and cream flowers" loading="lazy" /><figcaption><span>02</span>A moment with the flowers</figcaption></figure>
+          <figure data-reveal><img src="/images/anshu-personal.webp" width="686" height="1280" alt="Anshu smiling beside a window in a burgundy patterned outfit" loading="lazy" /><figcaption><span>03</span>A little everyday warmth</figcaption></figure>
+        </div>
       </div>
     </section>
+    <section className="story-closing section" aria-labelledby="story-closing-heading"><Botanical /><div className="container prose" data-reveal><p className="eyebrow">Where we can begin</p><h2 id="story-closing-heading">You can be there for others.<br /><em>And be here for yourself.</em></h2><p>If you have always been the strong one, there is space here for you, too.</p></div></section>
     <Invitation />
-  </>
+  </div>
 );

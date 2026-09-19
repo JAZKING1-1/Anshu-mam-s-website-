@@ -2,35 +2,45 @@
 
 ## Identity
 
-Life and relationship coaching for women. The central invitation is **Come home to yourself.** The narrative connects her own experience of overgiving and rediscovery with courage, clarity, and confidence. Use warm, concrete language, real photographs, and practical descriptions of the coaching relationship. Publish only source-supported qualifications and service details.
+Life and relationship coaching for women. **Soft heart. Strong voice. Your life.** expresses warmth with agency. Her own journey connects overgiving and rediscovery with courage, clarity and confidence. Use concrete language, original photographs and source-supported qualifications. Spiritual warmth should not become promises of healing or guaranteed outcomes.
 
-## Visual language
+## Visual direction
 
-Quiet editorial layout: warm paper, muted rose, deep warm ink, fine botanical linework, gently arched portraits, generous spacing, and simple navigation. Cormorant Garamond headings pair with DM Sans body text. Avoid decorative effects that delay access to content. All fonts are served locally.
+Confident feminine editorial design: deep plum fields, berry accents, blush cream, grounded rust, luminous gold, generous spacing and curved portrait frames. Large, fuller serif headings create presence; clear body copy and restrained navigation keep the experience approachable. Botanical and lotus geometry supports the identity without competing with content.
 
-## Colour and type flexibility
+`src/index.css` provides the base layout; `src/experience.css` defines the richer presentation. Use semantic colour tokens throughout.
 
-Named palette and font settings live in `src/config/theme.ts`; CSS uses semantic tokens instead of page-specific hardcoded colours.
+## Default colour story: Rose & ritual
 
-| Token | Rose default | Purpose |
+| Token | Value | Role |
 | --- | --- | --- |
-| --paper | #f9f6f0 | Main background |
-| --surface | #fffcf8 | Light panels |
-| --ink | #352e30 | Primary text |
-| --muted | #6d6261 | Supporting text |
-| --accent | #805054 | Button background |
-| --accent-text | Contrast-safe accent | Headings and small icons |
-| --soft | #eee0de | Rose sections |
-| --sage | #e3e6dc | Supporting panels |
-| --deep | #423336 | Dark section background |
-| --on-deep | #fcf8f2 | Dark-section text |
-| --line | #dcd0ca | Dividers |
-| --gold | #917445 | Decorative details |
+| `--paper` | #faf1e7 | Warm main background |
+| `--surface` | #fffaf4 | Light panels |
+| `--ink` | #321e2b | Primary text |
+| `--muted` | #69505a | Supporting text |
+| `--accent` | #963c56 | Berry buttons and accents |
+| `--accent-text` | Contrast-safe accent | Headings and small labels |
+| `--accent-ink` | #ffffff | Accent-button text |
+| `--soft` | #efd5d7 | Blush sections |
+| `--sage` | #e4e4d3 | Grounded supporting panels |
+| `--deep` | #301b2a | Deep plum sections |
+| `--on-deep` | #fff4e7 | Text on deep sections |
+| `--line` | #d8b7ba | Dividers |
+| `--gold` | #916536 | Details on light backgrounds |
+| `--gold-light` | #e8bf8d | Details on deep backgrounds |
+| `--accent-on-deep` | #e8bf8d | Contrast-safe emphasis on deep |
+| `--rust` | #a14832 | Earthy decorative accent |
 
-Additional presets: Sage sanctuary, Lavender dusk, Sand & gold. Typeface choices: Editorial (Cormorant Garamond), Classic (Libre Baskerville), Timeless (Georgia). Appearance controls change only the current browser. Published defaults are configured in source.
+Alternative presets are **Sage & ceremony**, **Lavender & dusk**, and **Terracotta & gold**. Definitions live in `src/config/theme.ts`; IDs `rose`, `sage`, `lavender`, and `sand` are retained for saved preferences. Custom colours never replace body text. Accent text falls back to a safe colour when needed; button labels choose contrasting black or white.
 
-## Interaction
+## Typography
 
-Header navigation uses real links; SPA transitions preserve normal modified-click behavior and browser history. Mobile navigation closes after choosing a page or pressing Escape. The appearance studio uses a native modal dialog with keyboard focus containment. FAQs use accessible expanded states. Respect reduced-motion preferences.
+Editorial uses **Fraunces**, a characterful variable serif with substantial curves, paired with **DM Sans** for body text and controls. Main headings use weight 500, italic emphasis 450, and automatic optical sizing. Fraunces supports weights 100–900 and optical sizes 9–144; DM Sans uses its actual variable range, 100–1000.
 
-The primary invitation leads to an honest contact/booking state. No invented testimonials, ratings, availability, or success messages.
+The other options remain Classic (Libre Baskerville) and Timeless (Georgia), with Cormorant Garamond retained as a fallback. Fonts are served locally with SIL Open Font Licences. Sources: [Fraunces design project](https://github.com/undercasetype/Fraunces), [Google Fonts distribution](https://github.com/google/fonts/tree/main/ofl/fraunces), and [local font inventory](public/fonts/README.md).
+
+## Interaction and access
+
+The homepage combines a short lotus welcome, scroll-driven art, section reveals and a private three-tab Intention Guide. Intro Skip, Escape and footer replay provide control. Reduced-motion preferences suppress the welcome and decorative animation. See [motion design](docs/motion-design.md).
+
+Use real navigation links, visible keyboard focus, accessible tab/expanded states and native video controls. Mobile navigation closes on selection or Escape; the appearance studio uses a native modal dialog. Enquiries must show an honest configured or unconfigured state. No invented ratings, availability or success messages.
